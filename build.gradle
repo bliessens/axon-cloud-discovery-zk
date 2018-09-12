@@ -40,7 +40,8 @@ dependencies {
 
     compile('org.springframework.cloud:spring-cloud-starter-zookeeper-discovery') {
         exclude group: 'org.slf4j', module: 'slf4j-log4j12'
-
+        exclude group: 'com.netflix.ribbon'
+        exclude group: 'org.springframework.cloud', module: 'spring-cloud-starter-archaius'
     }
 
     //axon
