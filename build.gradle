@@ -12,6 +12,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'docker'
 
@@ -30,6 +31,12 @@ ext {
 }
 
 ext['curator.version'] = '2.12.0'
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
 
 dependencies {
 
@@ -56,12 +63,6 @@ dependencies {
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
-
 task ideaDockerPrepare(dependsOn: assemble) {
     doFirst {
         copy {
@@ -81,5 +82,12 @@ task buildDocker(type: Docker, dependsOn: assemble) {
             rename { fileName -> fileName.replace(jar.archiveName, 'axon-cloud-discovery.jar') }
             into stageDir
         }
+    }
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
     }
 }

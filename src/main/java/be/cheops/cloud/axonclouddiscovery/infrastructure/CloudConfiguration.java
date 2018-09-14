@@ -24,10 +24,9 @@ import org.springframework.web.client.RestOperations;
 
 @EnableDiscoveryClient
 @Configuration
-@Profile({"!single", "!cluster", "cloud"})
+@Profile({"!single", "cloud"})
 class CloudConfiguration {
 
-    // Example function providing a Spring Cloud Connector
     @Bean
     public CommandRouter springCloudCommandRouter(DiscoveryClient discoveryClient) {
         return new SpringCloudCommandRouter(discoveryClient, new AnnotationRoutingStrategy());

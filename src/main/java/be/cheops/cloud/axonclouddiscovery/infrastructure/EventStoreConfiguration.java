@@ -5,15 +5,9 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.DefaultCommandGateway;
-import org.axonframework.common.jpa.EntityManagerProvider;
 import org.axonframework.common.transaction.TransactionManager;
-import org.axonframework.eventsourcing.eventstore.EmbeddedEventStore;
-import org.axonframework.eventsourcing.eventstore.EventStorageEngine;
-import org.axonframework.eventsourcing.eventstore.EventStore;
-import org.axonframework.eventsourcing.eventstore.jpa.JpaEventStorageEngine;
 import org.axonframework.serialization.json.JacksonSerializer;
-import org.axonframework.serialization.upcasting.event.NoOpEventUpcaster;
-import org.axonframework.spring.config.annotation.AnnotationCommandHandlerBeanPostProcessor;
+import org.axonframework.spring.config.annotation.SpringParameterResolverFactoryBean;
 import org.axonframework.spring.messaging.unitofwork.SpringTransactionManager;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -22,8 +16,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.web.client.RestTemplate;
 
-import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.Collections;
 
 //@EnableAxon
@@ -40,9 +32,14 @@ public class EventStoreConfiguration {
         return new DefaultCommandGateway(commandBus);
     }
 
-    @Bean
-    public AnnotationCommandHandlerBeanPostProcessor annotationCommandHandlerBeanPostProcessor() {
-        return new AnnotationCommandHandlerBeanPostProcessor();
+//    @Bean
+//    public AnnotationCommandHandlerBeanPostProcessor annotationCommandHandlerBeanPostProcessor() {
+//        return new AnnotationCommandHandlerBeanPostProcessor();
+//    }
+
+    @Bean("springParameterResolverFactoryBean")
+    public SpringParameterResolverFactoryBean springParameterResolverFactoryBean() {
+        return new SpringParameterResolverFactoryBean();
     }
 
     @Bean("axonTransactionManager")
@@ -57,20 +54,20 @@ public class EventStoreConfiguration {
         objectMapper.registerModule(new JavaTimeModule());
         return new JacksonSerializer(objectMapper);
     }
-
-    @Bean
-    public EventStorageEngine eventStorageEngine(
-            @Qualifier("axonTransactionManager") TransactionManager axonTransactionManager,
-            DataSource dataSource,
-            EntityManagerProvider entityManagerProvider,
-            JacksonSerializer jacksonSerializer) throws SQLException {
-        return new JpaEventStorageEngine(jacksonSerializer, NoOpEventUpcaster.INSTANCE, dataSource, entityManagerProvider, axonTransactionManager);
-    }
-
-    @Bean(name = "eventBus")
-    public EventStore eventStore(EventStorageEngine eventStorageEngine) {
-        return new EmbeddedEventStore(eventStorageEngine);
-    }
+//
+//    @Bean
+//    public EventStorageEngine eventStorageEngine(
+//            @Qualifier("axonTransactionManager") TransactionManager axonTransactionManager,
+//            DataSource dataSource,
+//            EntityManagerProvider entityManagerProvider,
+//            JacksonSerializer jacksonSerializer) throws SQLException {
+//        return new JpaEventStorageEngine(jacksonSerializer, NoOpEventUpcaster.INSTANCE, dataSource, entityManagerProvider, axonTransactionManager);
+//    }
+//
+//    @Bean(name = "eventBus")
+//    public EventStore eventStore(EventStorageEngine eventStorageEngine) {
+//        return new EmbeddedEventStore(eventStorageEngine);
+//    }
 
     @Bean
     public RestTemplate restTemplate() {
