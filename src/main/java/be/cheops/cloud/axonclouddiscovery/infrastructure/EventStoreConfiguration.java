@@ -18,7 +18,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
 
-//@EnableAxon
 @Configuration
 //@EnableScheduling
 //@EnableTransactionManagement
