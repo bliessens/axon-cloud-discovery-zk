@@ -89,5 +89,11 @@ idea {
     module {
         downloadSources = true
         downloadJavadoc = true
+        
+        outputDir = file("$rootDir/out/production/$name")
+        testOutputDir = file("$rootDir/out/test/$name")
+
+        excludeDirs += [file('.gradle'), file('.idea'), file('build'), file('gradle')]
+
     }
 }
