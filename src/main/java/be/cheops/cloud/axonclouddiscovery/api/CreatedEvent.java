@@ -1,6 +1,6 @@
 package be.cheops.cloud.axonclouddiscovery.api;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CreatedEvent {
 

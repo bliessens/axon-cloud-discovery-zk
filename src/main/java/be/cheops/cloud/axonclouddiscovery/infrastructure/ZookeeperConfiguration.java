@@ -20,8 +20,8 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @Configuration
-@Profile({"!single", "cloud"})
-class CloudConfiguration {
+@Profile({"zookeeper"})
+class ZookeeperConfiguration {
 
     private static final RoutingStrategy ROUTING_STRATEGY = new AnnotationRoutingStrategy();
 
@@ -53,10 +53,6 @@ class CloudConfiguration {
         return new DistributedCommandBus(commandRouter, commandBusConnector);
     }
 
-//    @Bean({"localCommandBus", "localSegment"})
-//    public SimpleCommandBus commandBus(TransactionManager axonTransactionManager) {
-//        return new SimpleCommandBus(axonTransactionManager, NoOpMessageMonitor.INSTANCE);
-//    }
 
     static class CommandSerializerFactory {
         XStream newXStream() {

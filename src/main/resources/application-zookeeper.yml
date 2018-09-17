@@ -1,0 +1,13 @@
+axon:
+  distributed:
+    enabled: true
+    spring-cloud:
+      fallback-url: /message-routing-information
+spring:
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+
+eureka:
+  client:
+    enabled: false
