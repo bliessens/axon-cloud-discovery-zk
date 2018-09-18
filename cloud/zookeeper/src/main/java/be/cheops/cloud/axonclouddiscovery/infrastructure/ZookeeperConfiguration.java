@@ -56,10 +56,7 @@ class ZookeeperConfiguration {
 
     static class CommandSerializerFactory {
         XStream newXStream() {
-            final XStream xStream = new XStream(new CompactDriver());
-            xStream.registerConverter(new XStreamLocalDateConverter());
-            xStream.registerConverter(new XStreamLocalDateTimeConverter());
-            return xStream;
+            return new XStream(new CompactDriver());
         }
     }
 }

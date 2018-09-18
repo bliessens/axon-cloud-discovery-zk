@@ -6,3 +6,7 @@ Reduced size of jar by omitting Netflix Ribbon and Archaius
 Questions:
 
 - compatibility matrix of spring-boot and spring-cloud
+
+
+- Hazelcast + Kubernetes:
+https://github.com/hazelcast/hazelcast-kubernetes
