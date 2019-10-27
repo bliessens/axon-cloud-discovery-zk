@@ -22,6 +22,7 @@ ext {
 
 allprojects {
     apply plugin: 'java'
+    apply plugin: 'jacoco'
     apply plugin: 'idea'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
@@ -47,6 +48,15 @@ allprojects {
     dependencies {
         testCompile 'junit:junit:4.12'
     }
+
+
+    jacocoTestReport {
+        reports {
+            xml.enabled true
+        }
+    }
+
+    check.dependsOn jacocoTestReport
 
     idea {
         module {
