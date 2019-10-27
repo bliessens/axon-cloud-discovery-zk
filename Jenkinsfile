@@ -1,7 +1,7 @@
 @Library("jenkins-pipeline") _
 
 
-runPipeline(sonarqube: true)
+runPipeline(['sonarqube': false])
 
 
 
