@@ -11,6 +11,7 @@ import org.axonframework.eventsourcing.GenericAggregateFactory;
 import org.axonframework.eventsourcing.NoSnapshotTriggerDefinition;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.annotation.ParameterResolverFactory;
+import org.axonframework.spring.config.annotation.SpringParameterResolverFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +38,11 @@ class SampleConfiguration {
             @Qualifier("springParameterResolverFactoryBean") ParameterResolverFactory parameterResolverFactory) {
 
         return new AggregateAnnotationCommandHandler<>(SampleAggregate.class, sampleAggregateRepository, new AnnotationCommandTargetResolver(), parameterResolverFactory);
+    }
+
+    @Bean
+    public SpringParameterResolverFactoryBean springParameterResolverFactoryBean() {
+        return new SpringParameterResolverFactoryBean();
     }
 
 }

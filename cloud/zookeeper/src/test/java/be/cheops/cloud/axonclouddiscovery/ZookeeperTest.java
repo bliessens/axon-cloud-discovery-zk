@@ -5,11 +5,13 @@ import org.apache.zookeeper.server.ZooKeeperServerMain;
 import org.apache.zookeeper.server.quorum.QuorumPeerConfig;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+@Ignore
 public class ZookeeperTest {
 
     private Thread zookeeper;

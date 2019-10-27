@@ -1,6 +1,10 @@
 spring:
-  profiles:
-    active: zookeeper
   cloud:
     zookeeper:
       connect-string: zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
+
+axon:
+  distributed:
+    enabled: true
+    spring-cloud:
+      fallback-url: /message-routing-information

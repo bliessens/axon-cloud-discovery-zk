@@ -9,6 +9,7 @@ import org.axonframework.springcloud.commandhandling.SpringCloudCommandRouter;
 import org.axonframework.springcloud.commandhandling.SpringHttpCommandBusConnector;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,8 +25,8 @@ class EurekaConfiguration {
     private static final RoutingStrategy ROUTING_STRATEGY = new AnnotationRoutingStrategy();
 
     @Bean
-    public CommandRouter springCloudCommandRouter(DiscoveryClient discoveryClient) {
-        return new SpringCloudCommandRouter(discoveryClient, ROUTING_STRATEGY);
+    public CommandRouter springCloudCommandRouter(DiscoveryClient discoveryClient, Registration registration) {
+        return new SpringCloudCommandRouter(discoveryClient, registration, ROUTING_STRATEGY);
     }
 
 //    @Bean

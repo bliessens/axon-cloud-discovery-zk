@@ -23,9 +23,13 @@ class SampleAggregate {
     }
 
     @CommandHandler
-    public SampleAggregate(CreateCommand command) {
-        LOG.info("Created new aggregate with id {}", command.getId());
-        apply(new CreatedEvent(command.getId()));
+    public SampleAggregate(CreateCommand command, ValidationService service) {
+        if (service.validate()) {
+            LOG.info("Created new aggregate with id {}", command.getId());
+            apply(new CreatedEvent(command.getId()));
+        } else {
+            LOG.error("Invalid {} command", command.getClass().getSimpleName());
+        }
     }
 
     @EventSourcingHandler

@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      discovery:
+        enabled: true
+
+axon:
+  distributed:
+    enabled: true
+    spring-cloud:
+      fallback-url: /message-routing-information
+server:
+  port: 8080

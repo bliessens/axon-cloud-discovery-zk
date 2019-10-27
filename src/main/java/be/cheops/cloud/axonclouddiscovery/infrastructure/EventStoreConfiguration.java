@@ -6,7 +6,6 @@ import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.DefaultCommandGateway;
 import org.axonframework.common.transaction.TransactionManager;
-import org.axonframework.serialization.json.JacksonSerializer;
 import org.axonframework.spring.config.annotation.SpringParameterResolverFactoryBean;
 import org.axonframework.spring.messaging.unitofwork.SpringTransactionManager;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -47,12 +46,12 @@ public class EventStoreConfiguration {
         return new SpringTransactionManager(transactionManager);
     }
 
-    @Bean
-    public JacksonSerializer jacksonSerializer() {
-        final ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
-        return new JacksonSerializer(objectMapper);
-    }
+//    @Bean
+//    public JacksonSerializer eventSerializer() {
+//        final ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.registerModule(new JavaTimeModule());
+//        return new JacksonSerializer(objectMapper);
+//    }
 //
 //    @Bean
 //    public EventStorageEngine eventStorageEngine(
