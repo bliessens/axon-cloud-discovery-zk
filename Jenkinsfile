@@ -1,5 +1,5 @@
 @Library("jenkins-pipeline")
-import Jenkinsfie
+import Jenkinsfile
 
 
 
