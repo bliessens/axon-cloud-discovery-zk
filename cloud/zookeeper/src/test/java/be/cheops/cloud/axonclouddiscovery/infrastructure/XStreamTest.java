@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.fail;
 
 public class XStreamTest {
 
@@ -14,5 +15,10 @@ public class XStreamTest {
     @Test
     public void XStreamSupports_jsr310() {
         assertThat(xStream.toXML(LocalDate.of(2018, 9, 17))).isEqualTo("<local-date>2018-09-17</local-date>");
+    }
+
+    @Test
+    public void name() {
+        fail("what happens with the Jenkins pipeline?");
     }
 }
