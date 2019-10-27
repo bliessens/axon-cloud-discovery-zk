@@ -109,3 +109,6 @@ task buildDocker(type: Docker, dependsOn: assemble) {
     }
 }
 
+task publish(dependsOn: build) {
+
+}
