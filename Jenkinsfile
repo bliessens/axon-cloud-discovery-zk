@@ -1,5 +1,7 @@
-@Library("jenkins-pipeline")
-import Jenkinsfile
+@Library("jenkins-pipeline") _
+
+
+executePipeline()
 
 
 
