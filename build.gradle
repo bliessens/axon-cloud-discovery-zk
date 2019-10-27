@@ -84,13 +84,12 @@ dependencies {
         compile project(':cloud:eureka')
     }
 
-//axon
+    //axon
     compile "org.axonframework:axon-spring-boot-starter:$axon"
 
     testCompile "org.axonframework:axon-test:$axon"
 
     runtime 'org.hsqldb:hsqldb:2.3.6'
-//	compile('org.springframework.kafka:spring-kafka')
 
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 
