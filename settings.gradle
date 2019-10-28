@@ -1,3 +1,4 @@
 rootProject.name = 'axon-cloud-discovery'
+
 include 'cloud:zookeeper'
 include 'cloud:eureka'
