@@ -1,0 +1,18 @@
+<configuration debug="false">
+
+    <appender name="application" class="ch.qos.logback.core.FileAppender">
+        <file>test.log</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern xml:space="preserve">${logPattern}</pattern>
+        </encoder>
+        <append>true</append>
+    </appender>
+
+    <logger name="be.cheops" level="debug"/>
+    <logger name="org.springframework" level="info"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="application"/>
+    </root>
+</configuration>
