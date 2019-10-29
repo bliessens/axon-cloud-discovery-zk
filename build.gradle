@@ -46,7 +46,7 @@ allprojects {
     }
 
     dependencies {
-        testCompile 'junit:junit:4.12'
+        testImplementation 'junit:junit:4.12'
     }
 
 
@@ -74,26 +74,26 @@ allprojects {
 
 dependencies {
 
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile('org.springframework.boot:spring-boot-starter-actuator')
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     if (discovery == 'zookeeper') {
-        compile project(':cloud:zookeeper')
+        implementation project(':cloud:zookeeper')
     } else if (discovery == 'eureka') {
-        compile project(':cloud:eureka')
+        implementation project(':cloud:eureka')
     }
 
     //axon
-    compile "org.axonframework:axon-spring-boot-starter:$axon"
+    implementation "org.axonframework:axon-spring-boot-starter:$axon"
 
-    testCompile "org.axonframework:axon-test:$axon"
+    testImplementation "org.axonframework:axon-test:$axon"
 
-    runtime 'org.hsqldb:hsqldb:2.3.6'
+    runtimeOnly 'org.hsqldb:hsqldb:2.3.6'
 
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 }
 
 task ideaDockerPrepare(dependsOn: assemble) {

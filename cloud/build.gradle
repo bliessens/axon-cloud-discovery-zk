@@ -1,7 +1,7 @@
 subprojects {
     dependencies {
-        compile "org.axonframework:axon-distributed-commandbus-springcloud:$axon"
+        implementation "org.axonframework:axon-distributed-commandbus-springcloud:$axon"
 
-        testCompile "org.assertj:assertj-core"
+        testImplementation "org.assertj:assertj-core"
     }
 }
